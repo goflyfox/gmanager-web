@@ -51,7 +51,7 @@ npm run lint -- --fix
 
 #### 感谢
 
-1. gf框架 [https://github.com/PanJiaChen/vue-admin-template](https://github.com/PanJiaChen/vue-admin-template) 
+1. vue-admin-template框架 [https://github.com/PanJiaChen/vue-admin-template](https://github.com/PanJiaChen/vue-admin-template) 
 
 ## License
 
