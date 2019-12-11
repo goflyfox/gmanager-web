@@ -77,6 +77,18 @@ export const constantRoutes = [
         name: 'Role',
         component: () => import('@/views/sysmanage/role/index'),
         meta: { title: '角色管理', icon: 'link' }
+      },
+      {
+        path: 'system/log/index',
+        name: 'Log',
+        component: () => import('@/views/sysmanage/syslog/index'),
+        meta: { title: '日志管理', icon: 'link' }
+      },
+      {
+        path: 'system/config/index',
+        name: 'Config',
+        component: () => import('@/views/sysmanage/config/index'),
+        meta: { title: '配置管理', icon: 'link' }
       }
     ]
   },
