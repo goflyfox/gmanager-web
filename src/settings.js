@@ -1,6 +1,6 @@
 module.exports = {
 
-  title: 'Admin Manager',
+  title: '配置管理平台',
 
   /**
    * @type {boolean} true | false

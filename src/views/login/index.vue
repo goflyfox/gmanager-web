@@ -3,7 +3,7 @@
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left">
 
       <div class="title-container">
-        <h3 class="title">管理平台</h3>
+        <h3 class="title">{{title}}</h3>
       </div>
 
       <el-form-item prop="username">
@@ -54,7 +54,9 @@
 
 <script>
 import { validUsername } from '@/utils/validate'
+import { title } from '@/settings'
 import MD5 from 'js-md5'
+
 export default {
   name: 'Login',
   data() {
@@ -73,6 +75,7 @@ export default {
       }
     }
     return {
+      title:title,
       loginForm: {
         username: 'admin',
         passwd: '123456'
