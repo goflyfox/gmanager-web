@@ -4,13 +4,13 @@
       <el-input v-model="searchForm.operObject" size="small" clearable placeholder="请输入操作对象" style="width:200px;" />
       <el-input v-model="searchForm.operTable" size="small" clearable placeholder="请输入操作表" style="width:200px;" />
       <el-select v-model="searchForm.logType" size="small" clearable filterable placeholder="请选择类型">
-          <el-option
-            v-for="item in logTypeMaps"
-            :key="item.id"
-            :label="item.name"
-            :value="item.id"
-          />
-        </el-select>
+        <el-option
+          v-for="item in logTypeMaps"
+          :key="item.id"
+          :label="item.name"
+          :value="item.id"
+        />
+      </el-select>
       <el-button
         type="primary"
         size="small"
@@ -91,27 +91,27 @@
     </div>
 
     <el-dialog :title="activeTitle" :visible.sync="dialogFormVisible">
-      <el-form :model="form" >
+      <el-form :model="form">
         <el-form-item label="类型" :label-width="formLabelWidth">
-          <span>{{form.logType==1?"系统类型":"操作类型"}}</span>
+          <span>{{ form.logType==1?"系统类型":"操作类型" }}</span>
         </el-form-item>
         <el-form-item label="操作对象" :label-width="formLabelWidth">
-          <span>{{form.operObject}}</span>
+          <span>{{ form.operObject }}</span>
         </el-form-item>
         <el-form-item label="操作表" :label-width="formLabelWidth">
-          <span>{{form.operTable}}</span>
+          <span>{{ form.operTable }}</span>
         </el-form-item>
         <el-form-item label="操作主键" :label-width="formLabelWidth">
-          <span>{{form.operId}}</span>
+          <span>{{ form.operId }}</span>
         </el-form-item>
         <el-form-item label="创建时间" :label-width="formLabelWidth">
-          <span>{{form.createTime}}</span>
+          <span>{{ form.createTime }}</span>
         </el-form-item>
         <el-form-item label="创建人Id" :label-width="formLabelWidth">
-          <span>{{form.createId}}</span>
+          <span>{{ form.createId }}</span>
         </el-form-item>
         <el-form-item label="日志" :label-width="formLabelWidth">
-          <el-input type="textarea" :rows="4" v-model="form.operRemark" disabled />
+          <el-input v-model="form.operRemark" type="textarea" :rows="4" disabled />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -142,8 +142,8 @@ export default {
         page: '1'
       },
       logTypeMaps: [
-        {id:1,name:'系统类型'},
-        {id:2,name:'操作类型'}
+        { id: 1, name: '系统类型' },
+        { id: 2, name: '操作类型' }
       ],
       activeTitle: '查看日志详情', // 新增编辑菜单模态框标题
       dialogFormVisible: false, // 模态框
@@ -155,7 +155,7 @@ export default {
         operId: '',
         createTime: '',
         createId: '',
-        operRemark: '',
+        operRemark: ''
       },
       // 分页
       pagination: {
@@ -191,7 +191,7 @@ export default {
       })
     },
     resetForm() {
-      this.searchForm= {
+      this.searchForm = {
         operObject: '',
         operTable: '',
         logType: '',
@@ -206,7 +206,7 @@ export default {
       getDetail(data.id).then(response => {
         this.form = response.data
       })
-    },
+    }
   }
 }
 </script>

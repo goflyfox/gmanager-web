@@ -26,13 +26,13 @@
         新增
       </el-button>
     </div>
-    <div class='div-table'>
+    <div class="div-table">
       <el-table
-      :data="list"
-      element-loading-text="Loading"
-      border
-      fit
-      highlight-current-row
+        :data="list"
+        element-loading-text="Loading"
+        border
+        fit
+        highlight-current-row
       >
         <el-table-column label="序号" width="50">
           <template slot-scope="scope">
@@ -41,7 +41,7 @@
         </el-table-column>
         <el-table-column label="类型">
           <template slot-scope="scope">
-            {{ scope.row.typeName ? scope.row.typeName : "类型"}}
+            {{ scope.row.typeName ? scope.row.typeName : "类型" }}
           </template>
         </el-table-column>
         <el-table-column label="名称">
@@ -130,13 +130,13 @@
         <el-form-item label="名称" :label-width="formLabelWidth" prop="name">
           <el-input v-model="form.name" clearable autocomplete="off" />
         </el-form-item>
-        <el-form-item label="键" :label-width="formLabelWidth"  prop="key">
+        <el-form-item label="键" :label-width="formLabelWidth" prop="key">
           <el-input v-model="form.key" clearable autocomplete="off" />
         </el-form-item>
-        <el-form-item v-if="operType==1" label="值" :label-width="formLabelWidth"  prop="value">
+        <el-form-item v-if="operType==1" label="值" :label-width="formLabelWidth" prop="value">
           <el-input v-model="form.value" clearable autocomplete="off" />
         </el-form-item>
-        <el-form-item v-if="operType==1" label="编码" :label-width="formLabelWidth"  prop="code">
+        <el-form-item v-if="operType==1" label="编码" :label-width="formLabelWidth" prop="code">
           <el-input v-model="form.code" clearable autocomplete="off" />
         </el-form-item>
         <el-form-item label="排序号" :label-width="formLabelWidth">
@@ -204,7 +204,7 @@ export default {
         sort: '',
         enable: 1,
         copyStatus: '1',
-        changeStatus: '1',
+        changeStatus: '1'
       },
       rules1: {
         parentId: [
@@ -328,7 +328,7 @@ export default {
         sort: '',
         enable: 1,
         copyStatus: '1',
-        changeStatus: '1',
+        changeStatus: '1'
       }
       this.getTypeList()
       this.activeTitle = '新增配置'
@@ -336,16 +336,16 @@ export default {
         this.activeTitle = '编辑配置'
         getDetail(data.id).then(response => {
           this.form = response.data
-          this.getTypeList() 
-          if(this.form.parentId===0){
-            this.operType =2;
-          }else{
-            this.operType =1;
+          this.getTypeList()
+          if (this.form.parentId === 0) {
+            this.operType = 2
+          } else {
+            this.operType = 1
           }
           this.dialogFormVisible = true
         })
-      }else{
-        this.operType =1;
+      } else {
+        this.operType = 1
         this.dialogFormVisible = true
       }
     },
@@ -383,7 +383,7 @@ export default {
         sort: '',
         enable: 1,
         copyStatus: '1',
-        changeStatus: '1',
+        changeStatus: '1'
       }
       // 重置校验
       if (this.$refs['ruleForm']) {
