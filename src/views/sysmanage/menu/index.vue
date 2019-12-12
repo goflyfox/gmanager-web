@@ -76,6 +76,11 @@
             {{ scope.row.url }}
           </template>
         </el-table-column>
+         <el-table-column class-name="status-col" label="排序" width="80">
+          <template slot-scope="scope">
+            {{ scope.row.sort }}
+          </template>
+        </el-table-column>
         <el-table-column class-name="status-col" label="状态" width="80">
           <template slot-scope="scope">
             <el-tag :type="scope.row.status | statusTypeFilter">{{ scope.row.status | statusFilter }}</el-tag>
