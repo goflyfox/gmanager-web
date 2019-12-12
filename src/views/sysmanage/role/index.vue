@@ -137,6 +137,7 @@ import Pagination from '@/components/Pagination/index'
 import { getList, getDetail, getInfo, save, del } from '@/api/systemapi/role'
 import { getMenuTree } from '@/api/systemapi/menu'
 import { translateDataToTree } from '@/utils'
+import { pageParams } from "@/settings";
 
 export default {
   components: {
@@ -198,12 +199,7 @@ export default {
         ]
       },
       // 分页
-      pagination: {
-        pageSizes: [1, 10, 20, 30],
-        pageSize: 10,
-        currentPage: 1,
-        total: 1
-      }
+      pagination: pageParams
     }
   },
   watch: {

@@ -125,6 +125,7 @@
 <script>
 import Pagination from '@/components/Pagination/index'
 import { getList, getDetail } from '@/api/systemapi/log'
+import { pageParams } from "@/settings";
 
 export default {
   components: {
@@ -158,12 +159,7 @@ export default {
         operRemark: ''
       },
       // 分页
-      pagination: {
-        pageSizes: [1, 10, 20, 30],
-        pageSize: 10,
-        currentPage: 1,
-        total: 1
-      }
+      pagination: pageParams
     }
   },
   watch: {

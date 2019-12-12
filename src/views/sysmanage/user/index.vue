@@ -196,6 +196,7 @@ import {
 } from "@/api/systemapi/user";
 import { getTree } from "@/api/systemapi/depart";
 import { translateDataToTree } from "@/utils";
+import { pageParams } from "@/settings";
 
 export default {
   components: {
@@ -285,12 +286,7 @@ export default {
         roleids: ""
       },
       // 分页
-      pagination: {
-        pageSizes: [1, 10, 20, 30],
-        pageSize: 10,
-        currentPage: 1,
-        total: 1
-      }
+      pagination: pageParams
     };
   },
   watch: {
