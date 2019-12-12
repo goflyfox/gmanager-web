@@ -173,7 +173,7 @@
 <script>
 import Pagination from '@/components/Pagination/index'
 import { getList, getDetail, getType, save, del } from '@/api/systemapi/config'
-import { pageParams } from "@/settings";
+import { pageParams } from '@/settings'
 
 export default {
   components: {

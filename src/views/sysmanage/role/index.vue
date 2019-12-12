@@ -137,7 +137,7 @@ import Pagination from '@/components/Pagination/index'
 import { getList, getDetail, getInfo, save, del } from '@/api/systemapi/role'
 import { getMenuTree } from '@/api/systemapi/menu'
 import { translateDataToTree } from '@/utils'
-import { pageParams } from "@/settings";
+import { pageParams } from '@/settings'
 
 export default {
   components: {

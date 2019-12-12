@@ -153,7 +153,7 @@
 import Pagination from '@/components/Pagination/index'
 import { getList, getTree, getDetail, save, del } from '@/api/systemapi/depart'
 import { translateDataToTree } from '@/utils'
-import { pageParams } from "@/settings";
+import { pageParams } from '@/settings'
 
 export default {
   components: {

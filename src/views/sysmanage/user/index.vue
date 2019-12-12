@@ -51,10 +51,10 @@
       <el-table
         :data="list"
         element-loading-text="Loading"
-        @sort-change="sortTable"
         border
         fit
         highlight-current-row
+        @sort-change="sortTable"
       >
         <el-table-column label="序号" width="50">
           <template slot-scope="scope">{{ scope.$index + 1 }}</template>
@@ -185,7 +185,7 @@
 </template>
 
 <script>
-import Pagination from "@/components/Pagination/index";
+import Pagination from '@/components/Pagination/index'
 import {
   getList,
   getDetail,
@@ -193,10 +193,10 @@ import {
   saveRoleInfo,
   save,
   del
-} from "@/api/systemapi/user";
-import { getTree } from "@/api/systemapi/depart";
-import { translateDataToTree } from "@/utils";
-import { pageParams } from "@/settings";
+} from '@/api/systemapi/user'
+import { getTree } from '@/api/systemapi/depart'
+import { translateDataToTree } from '@/utils'
+import { pageParams } from '@/settings'
 
 export default {
   components: {
@@ -205,76 +205,76 @@ export default {
   filters: {
     typeFilter(type) {
       const typeMap = {
-        1: "目录",
-        2: "菜单"
-      };
-      return typeMap[type];
+        1: '目录',
+        2: '菜单'
+      }
+      return typeMap[type]
     },
     userTypeFilter(status) {
       const statusMap = {
-        1: "管理员",
-        2: "普通用户",
-        3: "前台用户"
-      };
-      return statusMap[status];
+        1: '管理员',
+        2: '普通用户',
+        3: '前台用户'
+      }
+      return statusMap[status]
     },
     statusTypeFilter(status) {
       const statusMap = {
-        1: "success",
-        2: "danger"
-      };
-      return statusMap[status];
+        1: 'success',
+        2: 'danger'
+      }
+      return statusMap[status]
     }
   },
   data() {
     return {
       userTypeMaps: [
-        { id: 1, name: "管理员" },
-        { id: 2, name: "普通用户" },
-        { id: 3, name: "前台用户" }
+        { id: 1, name: '管理员' },
+        { id: 2, name: '普通用户' },
+        { id: 3, name: '前台用户' }
       ],
       treeData: null,
       list: null,
       listLoading: true,
       currentDepart: null, // 当前选择的机构
       defaultProps: {
-        children: "children",
-        label: "name",
-        id: "id"
+        children: 'children',
+        label: 'name',
+        id: 'id'
       },
       searchForm: {
-        sidx: "", // 排序字段
-        sord: "", // 排序方向
-        username: "",
-        realName: "",
-        userType: "",
-        rows: "10",
-        page: "1",
-        departId: ""
+        sidx: '', // 排序字段
+        sord: '', // 排序方向
+        username: '',
+        realName: '',
+        userType: '',
+        rows: '10',
+        page: '1',
+        departId: ''
       },
 
-      activeTitle: "新增用户", // 新增编辑菜单模态框标题
+      activeTitle: '新增用户', // 新增编辑菜单模态框标题
       dialogFormVisible: false, // 模态框
-      formLabelWidth: "100px",
+      formLabelWidth: '100px',
       departList: [], // 机构下拉框数据
       form: {
-        departId: "",
-        userType: "",
-        username: "",
-        realName: "",
-        tel: "",
-        remark: ""
+        departId: '',
+        userType: '',
+        username: '',
+        realName: '',
+        tel: '',
+        remark: ''
       },
       formrules: {
         departId: [
-          { required: true, message: "请选择部门", trigger: "change" }
+          { required: true, message: '请选择部门', trigger: 'change' }
         ],
         userType: [
-          { required: true, message: "请选择用户类型", trigger: "change" }
+          { required: true, message: '请选择用户类型', trigger: 'change' }
         ],
         username: [
-          { required: true, message: "请输入用户名称", trigger: "blur" },
-          { min: 2, max: 20, message: "长度在 2 到 20 个字符", trigger: "blur" }
+          { required: true, message: '请输入用户名称', trigger: 'blur' },
+          { min: 2, max: 20, message: '长度在 2 到 20 个字符', trigger: 'blur' }
         ]
       },
       // 授权
@@ -282,198 +282,198 @@ export default {
       roleList: null, // 角色列表
       authRole: [], // 用户已授权角色
       authForm: {
-        userid: "",
-        roleids: ""
+        userid: '',
+        roleids: ''
       },
       // 分页
       pagination: pageParams
-    };
+    }
   },
   watch: {
     // 分页
-    "pagination.currentPage": function() {
-      this.searchForm.page = this.pagination.currentPage;
-      this.fetchData();
+    'pagination.currentPage': function() {
+      this.searchForm.page = this.pagination.currentPage
+      this.fetchData()
     },
-    "pagination.pageSize": function() {
-      this.searchForm.rows = this.pagination.pageSize;
-      this.searchForm.page = 1;
-      this.fetchData();
+    'pagination.pageSize': function() {
+      this.searchForm.rows = this.pagination.pageSize
+      this.searchForm.page = 1
+      this.fetchData()
     }
   },
   created() {
-    this.fetchData();
-    this.fetchTreeData();
+    this.fetchData()
+    this.fetchTreeData()
   },
   methods: {
     // 点击树形节点 ，过滤列表坐席
     filterDepart(data) {
-      this.searchForm.departId = data.id;
-      this.currentDepart = data.name;
-      this.fetchData(data.id);
+      this.searchForm.departId = data.id
+      this.currentDepart = data.name
+      this.fetchData(data.id)
     },
     // 重置搜索，刷新列表
     reset() {
       this.searchForm = {
-        sidx: "",
-        sord: "",
-        username: "",
-        realName: "",
-        userType: "",
-        rows: "10",
-        page: "1",
-        departId: ""
-      };
-      this.currentDepart = null;
-      this.fetchData();
+        sidx: '',
+        sord: '',
+        username: '',
+        realName: '',
+        userType: '',
+        rows: '10',
+        page: '1',
+        departId: ''
+      }
+      this.currentDepart = null
+      this.fetchData()
     },
     fetchData() {
-      this.listLoading = true;
+      this.listLoading = true
       getList({ ...this.searchForm }).then(response => {
-        this.list = response.data.rows;
-        this.pagination.total = response.data.records;
-        this.listLoading = false;
-      });
+        this.list = response.data.rows
+        this.pagination.total = response.data.records
+        this.listLoading = false
+      })
     },
     sortTable(column) {
-      console.log(column);
-      //获取字段名称和排序类型
-      var fieldName = column.prop;
-      var sortingType = column.order;
+      console.log(column)
+      // 获取字段名称和排序类型
+      var fieldName = column.prop
+      var sortingType = column.order
 
       const sortTypeMap = {
-        "": "",
-        ascending: "asc",
-        descending: "desc"
-      };
+        '': '',
+        ascending: 'asc',
+        descending: 'desc'
+      }
 
-      this.searchForm.sidx = fieldName;
-      this.searchForm.sord = sortTypeMap[sortingType];
+      this.searchForm.sidx = fieldName
+      this.searchForm.sord = sortTypeMap[sortingType]
 
-      this.fetchData();
+      this.fetchData()
     },
     fetchTreeData() {
-      this.listLoading = true;
+      this.listLoading = true
       getTree().then(response => {
-        this.departList = response.data;
-        this.treeData = translateDataToTree(response.data);
-        this.listLoading = false;
-      });
+        this.departList = response.data
+        this.treeData = translateDataToTree(response.data)
+        this.listLoading = false
+      })
     },
     // 用户授权
     setAuth(data) {
-      this.dialogAuthVisible = true;
-      this.authForm.userid = data.id;
+      this.dialogAuthVisible = true
+      this.authForm.userid = data.id
       getRoleInfo({ userId: data.id }).then(response => {
-        this.roleList = response.data.list;
-        this.authForm.roleids = response.data.roleIds;
+        this.roleList = response.data.list
+        this.authForm.roleids = response.data.roleIds
         this.authRole = this.authForm.roleids
-          ? this.authForm.roleids.split(",").map(Number)
-          : [];
-      });
+          ? this.authForm.roleids.split(',').map(Number)
+          : []
+      })
     },
     saveRole() {
-      this.authForm.roleids = this.authRole.join(",");
+      this.authForm.roleids = this.authRole.join(',')
       saveRoleInfo({ ...this.authForm }).then(response => {
         if (response.code === 0) {
           this.$message({
-            message: "授权成功",
-            type: "success"
-          });
-          this.dialogAuthVisible = false;
-          this.fetchData();
+            message: '授权成功',
+            type: 'success'
+          })
+          this.dialogAuthVisible = false
+          this.fetchData()
         } else {
           this.$message({
             message: response.msg,
-            type: "error"
-          });
+            type: 'error'
+          })
         }
-      });
+      })
     },
     // 删除
     del(data) {
-      this.$confirm("是否确定删除?", "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-        type: "warning"
+      this.$confirm('是否确定删除?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
       })
         .then(() => {
           del(data.id).then(response => {
             if (response.code === 0) {
               this.$message({
-                message: "删除成功",
-                type: "success"
-              });
-              this.dialogFormVisible = false;
-              this.fetchData();
+                message: '删除成功',
+                type: 'success'
+              })
+              this.dialogFormVisible = false
+              this.fetchData()
             } else {
               this.$message({
                 message: response.msg,
-                type: "error"
-              });
+                type: 'error'
+              })
             }
-          });
+          })
         })
         .catch(() => {
           this.$message({
-            type: "info",
-            message: "已取消删除"
-          });
-        });
+            type: 'info',
+            message: '已取消删除'
+          })
+        })
     },
     // 新增
     addOrUpdate(data) {
-      this.resetFileds();
+      this.resetFileds()
       this.form = {
-        departId: "",
-        userType: "",
-        username: "",
-        realName: "",
-        tel: "",
-        remark: ""
-      };
-      this.dialogFormVisible = true;
-      this.activeTitle = "新增用户";
-      this.fetchTreeData();
+        departId: '',
+        userType: '',
+        username: '',
+        realName: '',
+        tel: '',
+        remark: ''
+      }
+      this.dialogFormVisible = true
+      this.activeTitle = '新增用户'
+      this.fetchTreeData()
       if (data) {
-        this.activeTitle = "编辑用户";
+        this.activeTitle = '编辑用户'
         getDetail(data.id).then(response => {
-          this.form = response.data;
-        });
+          this.form = response.data
+        })
       }
     },
     // 保存
     save() {
-      this.$refs["ruleForm"].validate(valid => {
+      this.$refs['ruleForm'].validate(valid => {
         if (valid) {
           save({ ...this.form }).then(response => {
             if (response.code === 0) {
               this.$message({
-                message: "操作成功",
-                type: "success"
-              });
-              this.dialogFormVisible = false;
-              this.fetchData();
+                message: '操作成功',
+                type: 'success'
+              })
+              this.dialogFormVisible = false
+              this.fetchData()
             } else {
               this.$message({
                 message: response.msg,
-                type: "error"
-              });
+                type: 'error'
+              })
             }
-          });
+          })
         } else {
-          return false;
+          return false
         }
-      });
+      })
     },
     resetFileds() {
       // 重置校验
-      if (this.$refs["ruleForm"]) {
-        this.$refs["ruleForm"].resetFields();
+      if (this.$refs['ruleForm']) {
+        this.$refs['ruleForm'].resetFields()
       }
     }
   }
-};
+}
 </script>
 <style lang="scss" scoped>
 .app-container {

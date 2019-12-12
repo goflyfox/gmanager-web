@@ -76,7 +76,7 @@
             {{ scope.row.url }}
           </template>
         </el-table-column>
-         <el-table-column class-name="status-col" label="排序" width="80">
+        <el-table-column class-name="status-col" label="排序" width="80">
           <template slot-scope="scope">
             {{ scope.row.sort }}
           </template>
@@ -164,7 +164,7 @@
 import Pagination from '@/components/Pagination/index'
 import { getMenuList, getMenuTree, getMenuDetail, saveMenu, delMenu } from '@/api/systemapi/menu'
 import { translateDataToTree } from '@/utils'
-import { pageParams } from "@/settings";
+import { pageParams } from '@/settings'
 
 export default {
   components: {

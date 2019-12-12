@@ -125,7 +125,7 @@
 <script>
 import Pagination from '@/components/Pagination/index'
 import { getList, getDetail } from '@/api/systemapi/log'
-import { pageParams } from "@/settings";
+import { pageParams } from '@/settings'
 
 export default {
   components: {
